@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class Car {
 
-    private String title;
+    private String title; //this is redundant - used for checking if cars were properly loaded
     private String registrationYear;
     private double price;
 
