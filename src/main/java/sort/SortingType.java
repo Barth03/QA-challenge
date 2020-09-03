@@ -1,5 +1,6 @@
 package sort;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 
 public enum SortingType {
@@ -10,9 +11,10 @@ public enum SortingType {
     ORDER_BY_NAME_DESC(By.xpath("//option[@data-qa-selector-value='manufacturer.desc']")),
     ORDER_BY_NAME_ASC(By.xpath("//option[@data-qa-selector-value='manufacturer.asc']"));
 
-    public final By value;
+    @Getter
+    private final By value;
 
-    private SortingType(final By value) {
+    SortingType(final By value) {
         this.value = value;
     }
 }

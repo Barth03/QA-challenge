@@ -1,5 +1,7 @@
 package page;
 
+import utils.PendingRequests;
+
 import static com.codeborne.selenide.Selenide.open;
 
 public abstract class AbstractPage {
@@ -13,5 +15,9 @@ public abstract class AbstractPage {
 
     public void openPage() {
         open(BASE_URL + pageURL);
+    }
+
+    public void waitForPage() {
+        PendingRequests.waitForPageToBeLoaded();
     }
 }

@@ -1,4 +1,5 @@
 import entity.Car;
+import exception.FailedLoadResultException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import page.SearchPage;
@@ -14,11 +15,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class QAChallengeTest {
 
     private final String REGISTRATION_YEAR = "2015";
-    private final SortingType SORTING_TYPE = SortingType.ORDER_BY_PRICE_DESC;
     private final String SEARCH_PAGE_URL = "de/search/";
+    private final SortingType SORTING_TYPE = SortingType.ORDER_BY_PRICE_DESC;
 
     @Test
-    public void qaChallengeTest() {
+    public void qaChallengeTest() throws FailedLoadResultException {
 
         SearchPage page = new SearchPage(SEARCH_PAGE_URL);
         page.openPage();
@@ -28,7 +29,6 @@ public class QAChallengeTest {
         //cars.forEach(x -> log.info(x.toString()));
         assertThat(checkIfYearsUnderValue(REGISTRATION_YEAR, cars)).isFalse();
         assertThat(checkIfCarsAreSorted(cars)).isTrue();
-
     }
 
     private boolean checkIfYearsUnderValue(final String registrationYear, final List<Car> cars) {
